@@ -1,7 +1,7 @@
 {
   "name": "template-generator",
   "version": "1.0.0",
-  "description": "Generator for JavaScript (Node.js / React)",
+  "description": "Generator for JavaScript stack (Node.js / React)",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
