@@ -4,6 +4,10 @@
 
 O objetivo deste projeto é fornecer templates baseados na stack Javascript, como por exemplo: Node.js, React e React Native. Através dele, é possível pré-configurar projetos por meio da linha de comando, economizando o tempo de configuração inicial em um projeto
 
+### Artigo de inspiração
+
+Baseado no artigo [Creating a project generator with Node](https://medium.com/northcoders/creating-a-project-generator-with-node-29e13b3cd309), escrito pela Harriet Ryder
+
 ### Tecnologias
 
 - Node.js
