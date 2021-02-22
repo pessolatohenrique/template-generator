@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 const CURRENT_DIR = process.cwd();
+const CHOICES_TEMPLATES = fs.readdirSync(`${__dirname}/templates`);
 
 async function createDirectoryContents(templatePath, newPath) {
   const files = fs.readdirSync(templatePath);
@@ -22,14 +23,12 @@ async function createDirectoryContents(templatePath, newPath) {
 }
 
 async function main() {
-  const CHOICES = fs.readdirSync(`${__dirname}/templates`);
-
   const QUESTIONS = [
     {
       name: "project-choice",
       type: "list",
       message: "What project template would you like to generate?",
-      choices: CHOICES,
+      choices: CHOICES_TEMPLATES,
     },
     {
       name: "project-name",
@@ -44,26 +43,18 @@ async function main() {
   ];
 
   const answers = await inquirer.prompt(QUESTIONS);
-
-  /**mkdir and create directory*/
   const projectChoice = answers["project-choice"];
   const projectName = answers["project-name"];
   const templatePath = `${__dirname}/templates/${projectChoice}`;
-
-  console.log("Template Path", templatePath);
-
   const pathToCreate = `${CURRENT_DIR}/${projectName}`;
 
   if (fs.existsSync(pathToCreate)) {
-    console.log("Path already exists");
-    return;
+    throw Error("Path already exists");
   }
 
   await fs.mkdirSync(`${CURRENT_DIR}/${projectName}`, { recursive: true });
 
-  createDirectoryContents(templatePath, projectName);
-
-  console.log("Answers", answers);
+  await createDirectoryContents(templatePath, projectName);
 }
 
 try {
