@@ -11,10 +11,6 @@ O objetivo deste projeto é fornecer um template com recursos comuns à todos os
 
 ### Instalação do projeto
 
-Realizar o clone do projeto
-
-    git clone https://github.com/USER/template-sequelize-node.git
-
 Acesse a pasta do projeto e rode o comando para instalar as dependências npm:
 
     npm install
