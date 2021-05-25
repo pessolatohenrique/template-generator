@@ -39,6 +39,10 @@ module.exports = {
         return res.status(401).json(error);
       }
 
+      if (!info.token) {
+        return res.status(401).json({ message: "Empty token" });
+      }
+
       req.token = info.token;
       req.user = user;
       return next();
