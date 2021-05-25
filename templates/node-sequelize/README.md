@@ -15,7 +15,9 @@ Acesse a pasta do projeto e rode o comando para instalar as dependências npm:
 
     npm install
 
-Criar arquivo .env e configurar as variáveis de ambiente, semelhantes ao arquivo ".env-example".
+Criar arquivo .env e configurar as variáveis de ambiente, semelhantes ao arquivo "env-example".
+
+Criar arquivo .sequelizerc com as configurações definidas em "sequelizerc-example"
 
 Execute as "migrations" disponíveis, por meio do comando:
 
@@ -40,6 +42,10 @@ Para utilização do sequelize em linha de comando (CLI), utilizar:
 Por exemplo:
 
     npx sequelize-cli --help
+
+Para verificar os parâmetros permitidos em um comando, utilizar o "help". Por exemplo:
+
+    npx sequelize-cli --help db:seed
 
 ### Observações
 

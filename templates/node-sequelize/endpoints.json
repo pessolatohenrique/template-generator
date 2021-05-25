@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "c7f354fd-f542-4121-a90b-8ab11e59db6e",
-		"name": "Template Node",
+		"name": "Template Node Sequelize",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -196,6 +196,16 @@
 				{
 					"name": "index",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIxNTQ2OTY2LCJleHAiOjE2MjE1NDc4NjZ9.jP0RDu2h2d8-O-q-v-pHZrS-qAqJrxmHPQ0S6E4Et44",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -265,6 +275,68 @@
 						"header": [],
 						"url": {
 							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"pessolatohenrique\",\n\t\"password\": \"admin@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxOTgwMTkxLCJleHAiOjE2MjE5ODEwOTF9.s8qMLHPl_CJuMhRR7L5xd3bC9PAJH_1Jm8qcr6XMXbI\",\n    \"refreshToken\": \"bcc3a57249870fa428bd3572b62189dbf14d9af5e2cd5e84\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/refresh_token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refresh_token"
+							]
 						}
 					},
 					"response": []
