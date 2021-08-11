@@ -1,7 +1,21 @@
+const bcrypt = require("bcrypt");
 const model = require("../models").User;
 const tokens = require("../auth/tokens");
+const { ForgotPasswordEmail } = require("../utils/Email");
+const { NotFoundError, InvalidPasswordKey } = require("../utils/Errors");
 
+const ROUNDS_BCRYPT = 12;
+
+/**
+ * Represents Controller to User Requests
+ */
 class UserController {
+  /**
+   * creates token and refresh token
+   * @param {object} req request from express
+   * @param {object} res response from express
+   * @return {object} response with access token and refresh token
+   */
   static async login(req, res) {
     try {
       const { user } = req;
@@ -14,88 +28,53 @@ class UserController {
     }
   }
 
-  static async show(req, res) {
+  static async forgotPassword(req, res, next) {
     try {
-      const { id } = req.params;
-      const result = await model.findOne({ where: { id } });
-      const books = await result.getBooks();
-
-      const response = {
-        result,
-        books: [...books],
-      };
-
-      return res.status(200).json(response);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  }
-
-  static async store(req, res) {
-    try {
-      const result = await model.create(req.body);
-      return res.status(200).json(result);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  }
-
-  static async update(req, res) {
-    try {
-      const { id } = req.params;
-      const updated = await model.update(req.body, {
-        where: { id },
+      const { email } = req.body;
+      const user = await model.findOne({
+        where: { email },
       });
 
-      if (updated) {
-        const result = await model.findOne({ where: { id } });
-        return res.status(200).json(result);
+      if (!user) {
+        throw new NotFoundError();
       }
 
-      return res.status(200).json({ message: `author ${id} not found` });
+      const token = await tokens.forgotPassword.create(user.id);
+
+      const emailObj = new ForgotPasswordEmail(email, token);
+      emailObj.send();
+
+      return res
+        .status(200)
+        .json({ message: "Verifique o seu e-mail para redefinir a senha!" });
     } catch (error) {
-      return res.status(500).json(error);
+      return next(error);
     }
   }
 
-  static async destroy(req, res) {
+  static async resetPassword(req, res, next) {
     try {
-      const { id } = req.params;
-      const deleted = await model.destroy({ where: { id } });
+      const { token } = req.params;
+      const { password } = req.body;
+      const id = await tokens.forgotPassword.search(token);
 
-      if (deleted) {
-        return res.status(200).json({ message: `author ${id} was deleted` });
+      if (!id) {
+        throw new InvalidPasswordKey();
       }
 
-      return res.status(200).json({ message: `author ${id} not found` });
+      const user = await model.findOne({ where: { id } });
+      const passwordHash = await bcrypt.hash(password, ROUNDS_BCRYPT);
+
+      await user.update(
+        { password: passwordHash },
+        {
+          where: { id },
+        }
+      );
+
+      return res.status(200).json({ message: "Senha resetada com sucesso!" });
     } catch (error) {
-      return res.status(500).json(error);
-    }
-  }
-
-  static async restore(req, res) {
-    try {
-      const { id } = req.params;
-      const restored = await model.restore({ where: { id } });
-
-      if (restored) {
-        return res.status(200).json({ message: `author ${id} was restored` });
-      }
-
-      return res.status(200).json({ message: `author ${id} not found` });
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  }
-
-  static async getBooks(req, res) {
-    try {
-      const { id } = req.params;
-      const author = await model.findOne({ where: { id } });
-      const books = await author.getBooks();
-      return res.status(200).json(books);
-    } catch (error) {
-      return res.status(500).json(error);
+      return next(error);
     }
   }
 }
