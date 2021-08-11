@@ -11,6 +11,16 @@
 				{
 					"name": "index",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -30,6 +40,16 @@
 				{
 					"name": "show",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -50,6 +70,16 @@
 				{
 					"name": "books",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -71,11 +101,21 @@
 				{
 					"name": "store",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"George Orwell\"\n}",
+							"raw": "{\n\t\"name\": \"teste 2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -99,11 +139,21 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"George Orwell\"\n}",
+							"raw": "{\n\t\"name\": \"teste 22\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,7 +161,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/author/9",
+							"raw": "http://localhost:3000/author/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -119,7 +169,7 @@
 							"port": "3000",
 							"path": [
 								"author",
-								"9"
+								"7"
 							]
 						}
 					},
@@ -128,10 +178,20 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/author/12",
+							"raw": "http://localhost:3000/author/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -139,7 +199,7 @@
 							"port": "3000",
 							"path": [
 								"author",
-								"12"
+								"7"
 							]
 						}
 					},
@@ -148,10 +208,20 @@
 				{
 					"name": "restore",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/author/1/restore",
+							"raw": "http://localhost:3000/author/7/restore",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -159,7 +229,7 @@
 							"port": "3000",
 							"path": [
 								"author",
-								"1",
+								"7",
 								"restore"
 							]
 						}
@@ -169,6 +239,16 @@
 				{
 					"name": "count books",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -201,7 +281,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjIxNTQ2OTY2LCJleHAiOjE2MjE1NDc4NjZ9.jP0RDu2h2d8-O-q-v-pHZrS-qAqJrxmHPQ0S6E4Et44",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI4MjA3MDE5LCJleHAiOjE2MjgyMDc5MTl9.xZHl7fMiGDWl9kMw-eUQE5GTZ174-fGBuHnPsdBsUnM",
 									"type": "string"
 								}
 							]
@@ -231,6 +311,16 @@
 				{
 					"name": "sum pages by author",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI3OTQ5MjAzLCJleHAiOjE2Mjc5NTAxMDN9.M99H5ooIrJido66Bhzy_ojT-IfiYnB6aaXeOOzVBXhc",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -274,7 +364,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:3000/book/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"book",
+								"2"
+							]
 						}
 					},
 					"response": []
@@ -320,7 +419,63 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxOTgwMTkxLCJleHAiOjE2MjE5ODEwOTF9.s8qMLHPl_CJuMhRR7L5xd3bC9PAJH_1Jm8qcr6XMXbI\",\n    \"refreshToken\": \"bcc3a57249870fa428bd3572b62189dbf14d9af5e2cd5e84\"\n}",
+							"raw": "{\n\t\"refreshToken\": \"f12520e3481f7d21a8084fb6c458b99ede687fd4d89daddf\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/refresh_token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refresh_token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"pessolatohenrique@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/forgot_password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"forgot_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"refreshToken\": \"f12520e3481f7d21a8084fb6c458b99ede687fd4d89daddf\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
