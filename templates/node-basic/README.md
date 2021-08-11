@@ -1,4 +1,4 @@
-# Template para Node (Sequelize)
+# Template para Node
 
 ### Sobre
 
