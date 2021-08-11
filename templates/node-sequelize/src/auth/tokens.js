@@ -3,7 +3,6 @@ const crypto = require("crypto");
 const moment = require("moment");
 const allowList = require("../redis/allowlist-refresh-token");
 const ACCESS_EXPIRES_IN = "15m";
-const REFRESH_EXPIRES_IN = "5d";
 
 module.exports = {
   access: {
