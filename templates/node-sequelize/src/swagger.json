@@ -41,35 +41,35 @@
         }
       }
     },
-    "/currency": {
-      "get": {
-        "tags": ["Currencies"],
-        "description": "Index of Currency Module",
+    "/refresh_token": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Updates token with refresh token",
         "parameters": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "description": "Use 'Bearer' prefix",
+            "name": "refreshtoken",
+            "in": "body",
+            "description": "Refresh Token got into login",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/RefreshToken"
             }
           }
         ],
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Token is generated"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Invalid refresh token"
           }
         }
       }
     },
-    "/currency/calculate": {
+    "/book": {
       "get": {
-        "tags": ["Currencies"],
-        "description": "Index of Currency Module",
+        "tags": ["Books"],
+        "description": "Index of Books",
         "parameters": [
           {
             "name": "Authorization",
@@ -80,11 +80,11 @@
             }
           },
           {
-            "name": "price",
+            "name": "search",
             "in": "query",
             "required": true,
-            "description": "Price of product",
-            "type": "integer"
+            "description": "Title of book",
+            "type": "string"
           }
         ],
         "produces": ["application/json"],
@@ -92,11 +92,105 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Error"
+          }
+        }
+      }
+    },
+    "/book/sumPagesByAuthor": {
+      "get": {
+        "tags": ["Books"],
+        "description": "Group pages by author",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Use 'Bearer' prefix",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Error"
+          }
+        }
+      }
+    },
+    "/book/countByAuthor": {
+      "get": {
+        "tags": ["Books"],
+        "description": "Count total books by author",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Use 'Bearer' prefix",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Error"
+          }
+        }
+      }
+    },
+    "/book/{id}": {
+      "get": {
+        "tags": ["Books"],
+        "description": "Get details of a book",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Use 'Bearer' prefix",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the book",
+            "type": "string"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Error"
           }
         }
       }
@@ -115,13 +209,28 @@
         }
       }
     },
-    "Currency": {
-      "required": [],
-      "properties": {}
+    "RefreshToken": {
+      "required": ["refreshToken"],
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
     },
-    "Currencies": {
-      "type": "array",
-      "$ref": "#/definitions/Currency"
+    "Book": {
+      "required": [],
+      "properties": {
+        "name": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "pages": {
+          "type": "integer"
+        },
+        "authorId": {
+          "type": "integer"
+        }
+      }
     }
   }
 }
