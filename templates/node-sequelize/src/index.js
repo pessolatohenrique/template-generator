@@ -6,6 +6,10 @@ require("./auth/strategies");
 const app = express();
 routes(app);
 
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use((error, req, res, next) => {
   console.log("error", error);
   if (error.name === "SequelizeValidationError") {

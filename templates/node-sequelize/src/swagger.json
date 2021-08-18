@@ -1,0 +1,127 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Template Sequelize",
+    "description": "O objetivo deste projeto é fornecer um template com recursos comuns à todos os projetos em Node.js e Sequelize (Framework ORM). Entre os recursos estão: recursos de variáveis de ambiente, segurança com access token e refresh tokens, RBAC, ORM, tratamento de erros, recuperação de senha;",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Login and generate token to an existing user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "Username and password to login",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Token is generated"
+          },
+          "401": {
+            "description": "Invalid username or password / User does not exists"
+          }
+        }
+      }
+    },
+    "/currency": {
+      "get": {
+        "tags": ["Currencies"],
+        "description": "Index of Currency Module",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Use 'Bearer' prefix",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/currency/calculate": {
+      "get": {
+        "tags": ["Currencies"],
+        "description": "Index of Currency Module",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Use 'Bearer' prefix",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": true,
+            "description": "Price of product",
+            "type": "integer"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["username", "password"],
+      "properties": {
+        "username": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Currency": {
+      "required": [],
+      "properties": {}
+    },
+    "Currencies": {
+      "type": "array",
+      "$ref": "#/definitions/Currency"
+    }
+  }
+}

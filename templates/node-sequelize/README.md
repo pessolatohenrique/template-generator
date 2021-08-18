@@ -2,7 +2,7 @@
 
 ### Sobre
 
-O objetivo deste projeto é fornecer um template com recursos comuns à todos os projetos em Node.js e Sequelize (Framework ORM)
+O objetivo deste projeto é fornecer um template com recursos comuns à todos os projetos em Node.js e Sequelize (Framework ORM). Entre os recursos estão: recursos de variáveis de ambiente, segurança com access token e refresh tokens, RBAC, ORM, tratamento de erros, recuperação de senha;
 
 ### Tecnologias
 
@@ -46,6 +46,13 @@ Por exemplo:
 Para verificar os parâmetros permitidos em um comando, utilizar o "help". Por exemplo:
 
     npx sequelize-cli --help db:seed
+
+### Documentação por meio do Swagger
+
+Para visualizar os endpoints criados, acessar o caminho
+
+    /api-docs
+    Exemplo: http://localhost:3000/api-docs/
 
 ### Observações
 
