@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container, Typography } from "@material-ui/core";
+import { Container, Typography, Card, CardContent } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 
 const columns = [
@@ -32,7 +32,13 @@ function App() {
 
     listBooks();
 
-    socket.on("changedBook", (data) => console.log("changed book io!!", data));
+    socket.on("changedBook", (data) => {
+      if (data) {
+        const newAuthors = [...authors];
+        newAuthors.push(data);
+        setAuthors(newAuthors);
+      }
+    });
   });
 
   async function listBooks() {
@@ -56,12 +62,16 @@ function App() {
 
   return (
     <Container maxWidth="sm" className={classes.container}>
-      <Typography variant="h3" component="h3">
-        Autores
-      </Typography>
-      <div style={{ height: 500, width: "100%" }}>
-        <DataGrid rows={authors} columns={columns} pageSize={50} />
-      </div>
+      <Card>
+        <CardContent>
+          <Typography variant="h3" component="h3">
+            Autores
+          </Typography>
+          <div style={{ height: 500, width: "100%" }}>
+            <DataGrid rows={authors} columns={columns} pageSize={50} />
+          </div>
+        </CardContent>
+      </Card>
     </Container>
   );
 }
