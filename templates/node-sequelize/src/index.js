@@ -1,10 +1,13 @@
 const express = require("express");
 const routes = require("./routes");
 const socket = require("./socket");
+const cors = require("cors");
+
 // necessary to load strategies
 require("./auth/strategies");
 
 const app = express();
+app.use(cors());
 const server = require("http").createServer(app);
 routes(app);
 global.io = socket(app, server);
