@@ -57,6 +57,7 @@ class AuthorController {
   static async store(req, res, next) {
     try {
       const result = await model.create(req.body);
+      global.io.emit("changedBook", result);
       return res.status(200).json(result);
     } catch (error) {
       return next(error);

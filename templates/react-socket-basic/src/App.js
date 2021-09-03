@@ -6,7 +6,8 @@ import { useEffect } from "react";
 function App() {
   useEffect(() => {
     const socket = io("http://localhost:3000", { transports: ["websocket"] });
-    console.log("called use effect");
+
+    socket.on("changedBook", (data) => console.log("changed book io!!", data));
   });
 
   return (
