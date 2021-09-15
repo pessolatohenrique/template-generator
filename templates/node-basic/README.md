@@ -9,7 +9,13 @@ O objetivo deste projeto é fornecer um template com recursos comuns à todos os
 - Node.js
 - Express
 
-### Instalação do projeto
+### Instalação do projeto (com o docker)
+
+Acesse a pasta do projeto e rode o comando:
+
+    docker-compose up -d
+
+### Instalação do projeto (sem o docker)
 
 Acesse a pasta do projeto e rode o comando para instalar as dependências npm:
 

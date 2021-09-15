@@ -6,7 +6,7 @@ module.exports = (app) => {
   app.get("/author", (req, res) => {
     return res
       .status(200)
-      .json({ message: "everything is fine in GET request!" });
+      .json({ message: "everything is fine in GET request" });
   });
 
   app.post("/author", function (req, res) {
