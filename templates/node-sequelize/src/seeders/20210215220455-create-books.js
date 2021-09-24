@@ -1,7 +1,12 @@
 "use strict";
+const model = require("../models").Book;
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    const result = await model.findOne({ where: { id: 1 } });
+
+    if (result) return false;
+
     await queryInterface.bulkInsert(
       "books",
       [

@@ -54,6 +54,18 @@ Para visualizar os endpoints criados, acessar o caminho
     /api-docs
     Exemplo: http://localhost:3000/api-docs/
 
+### Execução de testes por meio do Jest
+
+Criar arquivo .env.test e configurar as variáveis de ambiente, semelhantes ao arquivo ".env.test-example". Este arquivo será utilizado para geração de testes, baseados em TDD. O conteúdo da chave "JWT_KEY" deve ser uma String, que faz parte do processo de criação de um token
+
+Execute os testes disponíveis, por meio do comando:
+
+    npm run test
+
+Para visualização de reports, acessar o caminho abaixo
+
+    __tests__/coverage/Icov-report/index.html
+
 ### Observações
 
 Os endpoints criados podem ser importados por meio do arquivo "endpoints.json" em um Software como o Postman (ou semelhante).

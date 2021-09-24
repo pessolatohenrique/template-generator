@@ -27,6 +27,8 @@ app.use((error, req, res, next) => {
   return next(error);
 });
 
-server.listen(3000, () => console.log("Server Started"));
+if (process.env.NODE_ENV !== "test") {
+  server.listen(3000, () => console.log("Server Started"));
+}
 
 module.exports = app;
