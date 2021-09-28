@@ -5,7 +5,7 @@ describe("Authentication", () => {
   it("should authenticate with valid credentials", async () => {
     const response = await request(app).post("/login").send({
       username: "pessolatohenrique",
-      password: "admin@123",
+      password: process.env.CORRECT_PASSWORD_TEST,
     });
 
     const responseRefresh = await request(app).post("/refresh_token").send({
@@ -28,6 +28,15 @@ describe("Authentication", () => {
       username: "pessolatohenrique",
       password: "fakepassword",
     });
+
+    expect(response.status).toBe(401);
+  });
+
+  it("should not call endpoint with invalid token", async () => {
+    const response = await request(app)
+      .get(`/book?search=hercules`)
+      .set("Authorization", `Bearer 12345`)
+      .send();
 
     expect(response.status).toBe(401);
   });
