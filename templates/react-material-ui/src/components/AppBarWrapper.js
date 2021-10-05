@@ -15,6 +15,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import MenuIcon from "@material-ui/icons/Menu";
 import BookIcon from "@material-ui/icons/Book";
 import PeopleIcon from "@material-ui/icons/People";
+import { PROJECT_NAME } from "../constants/default_settings";
 
 const items = [
   {
@@ -50,12 +51,18 @@ function AppBarWrapper() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            data-testid="menu-button"
             onClick={handleDrawerOpen}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Project name
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            data-testid="project-name"
+          >
+            {PROJECT_NAME}
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
