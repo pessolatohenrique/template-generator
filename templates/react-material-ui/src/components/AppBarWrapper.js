@@ -28,6 +28,11 @@ const items = [
     link: "livros",
     icon: <BookIcon />,
   },
+  {
+    table: "livros detalhes",
+    link: "livros/5",
+    icon: <BookIcon />,
+  },
 ];
 
 function AppBarWrapper() {
