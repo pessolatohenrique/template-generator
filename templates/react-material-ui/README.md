@@ -14,6 +14,8 @@ Acesse a pasta do projeto e rode o comando para instalar as dependências npm:
 
     npm install
 
+Criar arquivo .env e configurar as variáveis de ambiente, semelhantes ao arquivo "env-example".
+
 Execute o projeto:
 
     npm start
