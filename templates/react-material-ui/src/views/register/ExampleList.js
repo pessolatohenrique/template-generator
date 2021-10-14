@@ -12,10 +12,13 @@ import {
   TableBody,
   TableCell,
   TableRow,
+  Grid,
 } from "@mui/material";
 import { StyledTableCell } from "../../constants/CustomStyles";
 import { THEME_COLOR } from "../../constants/default_settings";
 import BreadcrumbsWrapper from "../../components/BreadcrumbsWrapper";
+import ListIcon from "@material-ui/icons/List";
+import ViewModuleIcon from "@material-ui/icons/ViewModule";
 
 function createData(name, author, pages, genre) {
   return { name, author, pages, genre };
@@ -55,6 +58,14 @@ function ExampleList() {
             >
               Livros
             </Typography>
+            <Grid container justifyContent="flex-end" gap="10px">
+              <Button variant="text">
+                <ListIcon color="primary" />
+              </Button>
+              <Button variant="text">
+                <ViewModuleIcon />
+              </Button>
+            </Grid>
             <TableContainer>
               <Table>
                 <TableHead>
