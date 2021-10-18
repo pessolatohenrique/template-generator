@@ -6,12 +6,14 @@ function ViewListToggle({ isTable, isList, switchFormat }) {
   return (
     <Grid container justifyContent="flex-end" gap="10px">
       <Button
+        data-testid="view-table"
         variant={isTable() ? "contained" : "text"}
         onClick={() => switchFormat("table")}
       >
         <ListIcon />
       </Button>
       <Button
+        data-testid="view-card"
         variant={isList() ? "contained" : "text"}
         onClick={() => switchFormat("list")}
       >
