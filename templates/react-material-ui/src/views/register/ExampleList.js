@@ -111,25 +111,29 @@ function ExampleList() {
                           >
                             {row.name}
                           </Typography>
-                          <Typography variant="body2">
-                            <List variant="body2">
-                              <ListItem>
-                                <ListItemText disableTypography>
+                          <List variant="body2">
+                            <ListItem>
+                              <ListItemText disableTypography>
+                                <Typography variant="body2">
                                   {row.author}
-                                </ListItemText>
-                              </ListItem>
-                              <ListItem>
-                                <ListItemText disableTypography>
+                                </Typography>
+                              </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText disableTypography>
+                                <Typography variant="body2">
                                   {row.genre}
-                                </ListItemText>
-                              </ListItem>
-                              <ListItem>
-                                <ListItemText disableTypography>
+                                </Typography>
+                              </ListItemText>
+                            </ListItem>
+                            <ListItem>
+                              <ListItemText disableTypography>
+                                <Typography variant="body2">
                                   {row.pages}
-                                </ListItemText>
-                              </ListItem>
-                            </List>
-                          </Typography>
+                                </Typography>
+                              </ListItemText>
+                            </ListItem>
+                          </List>
                         </CardContent>
                       </Card>
                     </Grid>
