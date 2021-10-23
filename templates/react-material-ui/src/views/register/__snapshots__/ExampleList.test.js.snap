@@ -266,16 +266,16 @@ exports[`ExampleList should generate snapshot 1`] = `
     <div
       class="MuiCardActions-root MuiCardActions-spacing css-1t6e9jv-MuiCardActions-root"
     >
-      <button
+      <a
         class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButtonBase-root css-1knaqv7-MuiButtonBase-root-MuiButton-root"
+        href="/autores/novo"
         tabindex="0"
-        type="button"
       >
         Adicionar
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
         />
-      </button>
+      </a>
     </div>
   </div>
 </div>

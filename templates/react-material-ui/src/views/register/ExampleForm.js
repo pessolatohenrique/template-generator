@@ -141,7 +141,11 @@ function ExampleForm() {
                     >
                       {books.map((item) => {
                         return (
-                          <MenuItem key={item.id} value={item.id}>
+                          <MenuItem
+                            key={item.id}
+                            value={item.id}
+                            inputProps={{ "data-testid": "book-option" }}
+                          >
                             {item.name}
                           </MenuItem>
                         );

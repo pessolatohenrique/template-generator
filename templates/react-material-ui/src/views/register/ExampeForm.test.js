@@ -8,16 +8,19 @@ describe("Example Form", () => {
   });
 
   it("should validate fields when in blank", async () => {
-    render(<ExampleForm />);
+    const { container } = render(<ExampleForm />);
     const submitBtn = screen.getByTestId("submit-button");
+
     fireEvent.click(submitBtn);
 
-    waitFor(() => {
-      expect(screen.getByTestId("firstName").toHaveClass("Mui-error"));
-    });
+    setTimeout(() => {
+      expect(
+        container.getElementsByClassName("Mui-error").length
+      ).toBeGreaterThan(0);
+    }, 500);
   });
 
-  it("should submit form", async () => {
+  it("should submit form", () => {
     const { container } = render(<ExampleForm />);
     const submitBtn = screen.getByTestId("submit-button");
     const firstName = screen.getByTestId("firstName");
@@ -27,8 +30,15 @@ describe("Example Form", () => {
     fireEvent.input(lastName, { target: { value: "Henrique" } });
     fireEvent.click(submitBtn);
 
-    waitFor(() => {
-      expect(container.getElementsByClassName("Mui-error")).toHaveLength(0);
-    });
+    expect(container.getElementsByClassName("Mui-error")).toHaveLength(0);
+  });
+
+  it("should load dependent selectbox", () => {
+    render(<ExampleForm />);
+    const parentSelect = screen.getByTestId("author");
+
+    fireEvent.input(parentSelect, { target: { value: "jkrowling" } });
+
+    expect(parentSelect.value).toBe("jkrowling");
   });
 });
