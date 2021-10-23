@@ -46,6 +46,7 @@ function ExampleForm() {
                     fullWidth
                     id="firstName"
                     label="First Name"
+                    inputProps={{ "data-testid": "firstName" }}
                     error={Boolean(errors.firstName)}
                     helperText={
                       errors.firstName && "Campo de preenchimento obrigatório"
@@ -61,6 +62,7 @@ function ExampleForm() {
                     fullWidth
                     id="lastName"
                     label="Lastname Name"
+                    inputProps={{ "data-testid": "lastName" }}
                     error={Boolean(errors.lastName)}
                     helperText={
                       errors.lastName && "Campo de preenchimento obrigatório"
@@ -69,7 +71,11 @@ function ExampleForm() {
                   />
                 </Grid>
                 <Grid item>
-                  <Button variant="contained" type="submit">
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    data-testid="submit-button"
+                  >
                     Salvar
                   </Button>
                 </Grid>
