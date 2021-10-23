@@ -12,11 +12,11 @@ function App() {
       <AppBarWrapper />
 
       <Switch>
-        <Route path="/autores">
+        <Route exact path="/autores">
           <ExampleList />
         </Route>
 
-        <Route exact path="/livros">
+        <Route exact path="/autores/novo">
           <ExampleForm />
         </Route>
 
