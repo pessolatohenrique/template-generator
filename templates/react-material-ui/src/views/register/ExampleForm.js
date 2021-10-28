@@ -19,6 +19,7 @@ import {
 import { useForm } from "react-hook-form";
 
 import { THEME_COLOR } from "../../constants/default_settings";
+import { REQUIRED_MESSAGE } from "../../constants/messages";
 import BreadcrumbsWrapper from "../../components/BreadcrumbsWrapper";
 
 const books_data = [
@@ -45,11 +46,13 @@ function ExampleForm() {
   } = useForm();
   const onSubmit = (data) => console.log(data);
 
+  const watchAuthor = watch("author");
+
   useEffect(() => {
     const author = watch("author");
     const books = [...books_data].filter((item) => item.author === author);
     setBooks(books);
-  }, [watch("author")]);
+  }, [watchAuthor]);
 
   return (
     <>
@@ -78,9 +81,7 @@ function ExampleForm() {
                     label="First Name"
                     inputProps={{ "data-testid": "firstName" }}
                     error={Boolean(errors.firstName)}
-                    helperText={
-                      errors.firstName && "Campo de preenchimento obrigatório"
-                    }
+                    helperText={errors.firstName && REQUIRED_MESSAGE}
                     {...register("firstName", {
                       required: true,
                       maxLength: 20,
@@ -94,9 +95,7 @@ function ExampleForm() {
                     label="Last Name"
                     inputProps={{ "data-testid": "lastName" }}
                     error={Boolean(errors.lastName)}
-                    helperText={
-                      errors.lastName && "Campo de preenchimento obrigatório"
-                    }
+                    helperText={errors.lastName && REQUIRED_MESSAGE}
                     {...register("lastName", { required: true, maxLength: 20 })}
                   />
                 </Grid>
@@ -119,9 +118,7 @@ function ExampleForm() {
                       <MenuItem value={"natharcuri"}>Nathalia Arcuri</MenuItem>
                     </Select>
                     {errors.author && (
-                      <FormHelperText error>
-                        With label + helper text
-                      </FormHelperText>
+                      <FormHelperText error>{REQUIRED_MESSAGE}</FormHelperText>
                     )}
                   </FormControl>
                 </Grid>
@@ -152,9 +149,7 @@ function ExampleForm() {
                       })}
                     </Select>
                     {errors.book && (
-                      <FormHelperText error>
-                        With label + helper text
-                      </FormHelperText>
+                      <FormHelperText error>{REQUIRED_MESSAGE}</FormHelperText>
                     )}
                   </FormControl>
                 </Grid>
