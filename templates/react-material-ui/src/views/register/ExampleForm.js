@@ -16,6 +16,7 @@ import {
   FormControlLabel,
   Switch,
 } from "@mui/material";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 
 import { THEME_COLOR } from "../../constants/default_settings";
@@ -49,6 +50,16 @@ function ExampleForm() {
   const watchAuthor = watch("author");
 
   useEffect(() => {
+    async function searchCep() {
+      console.log(process.env);
+      const cep = await axios.get(
+        `https://viacep.com.br/ws/${process.env.REACT_APP_CEP_EXAMPLE}/json/`
+      );
+      console.log("cep example", cep);
+    }
+
+    searchCep();
+
     const author = watch("author");
     const books = [...books_data].filter((item) => item.author === author);
     setBooks(books);
