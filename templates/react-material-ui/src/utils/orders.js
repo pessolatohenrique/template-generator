@@ -2,7 +2,7 @@ export function orderByText(list, attribute) {
   return list.sort((a, b) => a[attribute].localeCompare(b[attribute]));
 }
 
-export function orderByListFloat(list, attribute, order) {
+export function orderByListFloat(list, attribute, order = "DESC") {
   const orderedList = list;
 
   if (order.toUpperCase() === "ASC") {
