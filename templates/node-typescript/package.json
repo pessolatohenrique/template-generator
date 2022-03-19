@@ -4,8 +4,9 @@
   "description": "Template com pacotes base para Node.js",
   "main": "index.js",
   "scripts": {
-    "start": "npx ts-node-dev index.ts",
+    "start": "concurrently \"npm run watch\" \"npm run server\"",
     "watch": "tsc -w",
+    "server": "npx ts-node-dev index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
