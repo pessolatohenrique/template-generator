@@ -1,12 +1,12 @@
 import React from "react";
-import logo from "./logo.svg";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
 import { TestComponent } from "./TestComponent";
+import AppBarWrapper from "./components/AppBarWrapper";
 
 function App() {
   return (
     <Router>
+      <AppBarWrapper />
       <Switch>
         <Route exact path="/">
           <TestComponent />
