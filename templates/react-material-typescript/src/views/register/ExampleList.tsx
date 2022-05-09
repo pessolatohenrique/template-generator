@@ -13,13 +13,16 @@ import {
   TableCell,
   TableRow,
   Grid,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
-import ListIcon from "@mui/icons-material/List";
-import ViewModuleIcon from "@mui/icons-material/ViewModule";
 import { StyledTableCell } from "../../constants/CustomStyles";
 import { THEME_COLOR } from "../../constants/default_settings";
 import BreadcrumbsWrapper from "../../components/BreadcrumbsWrapper";
+import ViewListToggle from "../../components/ViewListToggle";
 import { IBook, IBookList } from "../../interfaces/Book";
+import useView from "../../hooks/useView";
 
 function createData({ book, author, pages, genre }: IBook) {
   return { book, author, pages, genre };
@@ -61,6 +64,8 @@ const rows: IBookList = {
 };
 
 function ExampleList() {
+  const [isTable, isList, switchFormat] = useView();
+
   return (
     <>
       <Container fixed>
@@ -76,38 +81,80 @@ function ExampleList() {
             >
               Livros
             </Typography>
-            <Grid container justifyContent="flex-end" gap="10px">
-              <Button variant="text">
-                <ListIcon color="primary" />
-              </Button>
-              <Button variant="text">
-                <ViewModuleIcon />
-              </Button>
-            </Grid>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Título</StyledTableCell>
-                    <StyledTableCell>Autor</StyledTableCell>
-                    <StyledTableCell>Gênero</StyledTableCell>
-                    <StyledTableCell>Páginas</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.items.map((row: IBook) => {
-                    return (
-                      <TableRow key={row.book}>
-                        <TableCell>{row.book}</TableCell>
-                        <TableCell>{row.author}</TableCell>
-                        <TableCell>{row.genre}</TableCell>
-                        <TableCell>{row.pages}</TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </Table>
-            </TableContainer>
+
+            <ViewListToggle
+              isTable={isTable}
+              isList={isList}
+              switchFormat={switchFormat}
+            />
+
+            {isTable() && (
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <StyledTableCell>Título</StyledTableCell>
+                      <StyledTableCell>Autor</StyledTableCell>
+                      <StyledTableCell>Gênero</StyledTableCell>
+                      <StyledTableCell>Páginas</StyledTableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {rows.items.map((row: IBook) => {
+                      return (
+                        <TableRow key={row.book}>
+                          <TableCell>{row.book}</TableCell>
+                          <TableCell>{row.author}</TableCell>
+                          <TableCell>{row.genre}</TableCell>
+                          <TableCell>{row.pages}</TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            )}
+
+            {isList() && (
+              <Grid container spacing={2}>
+                {rows.items.map((row: IBook) => {
+                  return (
+                    <Grid item xs={4} key={row.book}>
+                      <Card>
+                        <CardContent>
+                          <Typography
+                            variant="h6"
+                            component="div"
+                            color="text.secondary"
+                          >
+                            {row.book}
+                          </Typography>
+                          <Typography variant="body2">
+                            <>
+                              <ListItem>
+                                <ListItemText disableTypography>
+                                  {row.author}
+                                </ListItemText>
+                              </ListItem>
+                              <ListItem>
+                                <ListItemText disableTypography>
+                                  {row.genre}
+                                </ListItemText>
+                              </ListItem>
+                              <ListItem>
+                                <ListItemText disableTypography>
+                                  {row.pages}
+                                </ListItemText>
+                              </ListItem>
+                            </>
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            )}
           </CardContent>
           <CardActions>
             <Button size="small">Adicionar</Button>
