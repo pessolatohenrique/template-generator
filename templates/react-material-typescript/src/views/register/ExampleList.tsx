@@ -12,7 +12,10 @@ import {
   TableBody,
   TableCell,
   TableRow,
+  Grid,
 } from "@mui/material";
+import ListIcon from "@mui/icons-material/List";
+import ViewModuleIcon from "@mui/icons-material/ViewModule";
 import { StyledTableCell } from "../../constants/CustomStyles";
 import { THEME_COLOR } from "../../constants/default_settings";
 import BreadcrumbsWrapper from "../../components/BreadcrumbsWrapper";
@@ -73,6 +76,14 @@ function ExampleList() {
             >
               Livros
             </Typography>
+            <Grid container justifyContent="flex-end" gap="10px">
+              <Button variant="text">
+                <ListIcon color="primary" />
+              </Button>
+              <Button variant="text">
+                <ViewModuleIcon />
+              </Button>
+            </Grid>
             <TableContainer>
               <Table>
                 <TableHead>
