@@ -30,6 +30,11 @@ const menuList: MenuList = {
       link: "livros",
       icon: <BookIcon />,
     },
+    {
+      table: "livros detalhes",
+      link: "livros/5",
+      icon: <BookIcon />,
+    },
   ],
 };
 
