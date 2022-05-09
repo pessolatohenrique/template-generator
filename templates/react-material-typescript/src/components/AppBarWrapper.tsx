@@ -16,6 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import BookIcon from "@mui/icons-material/Book";
 import PeopleIcon from "@mui/icons-material/People";
 import { MenuList, MenuItem } from "../interfaces/Menu";
+import { PROJECT_NAME } from "../constants/default_settings";
 
 const menuList: MenuList = {
   items: [
@@ -54,11 +55,17 @@ function AppBarWrapper() {
             aria-label="menu"
             sx={{ mr: 2 }}
             onClick={handleDrawerOpen}
+            data-testid="menu-button"
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Project name
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            data-testid="project-name"
+          >
+            {PROJECT_NAME}
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
