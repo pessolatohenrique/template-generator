@@ -46,7 +46,9 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^8.0.0",
     "@types/react-router-dom": "^5.3.3",
-    "jest-watch-typeahead": "^0.6.5"
+    "jest-watch-typeahead": "^0.6.5",
+    "react-test-renderer": "^18.1.0"
   }
 }
