@@ -12,7 +12,7 @@ function App() {
       <AppBarWrapper />
 
       <Switch>
-        <Route path="/autores">
+        <Route exact path="/autores">
           <ExampleList />
         </Route>
 

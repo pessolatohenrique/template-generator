@@ -157,7 +157,9 @@ function ExampleList() {
             )}
           </CardContent>
           <CardActions>
-            <Button size="small">Adicionar</Button>
+            <Button size="small" href="/autores/novo">
+              Adicionar
+            </Button>
           </CardActions>
         </Card>
       </Container>
