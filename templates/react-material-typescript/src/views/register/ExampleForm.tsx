@@ -19,6 +19,7 @@ import {
 import { useForm } from "react-hook-form";
 
 import { THEME_COLOR } from "../../constants/default_settings";
+import { REQUIRED_MESSAGE } from "../../constants/messages";
 import BreadcrumbsWrapper from "../../components/BreadcrumbsWrapper";
 import { IExampleForm } from "../../interfaces/FormData";
 import { IBook, IBookList } from "../../interfaces/Book";
@@ -113,9 +114,7 @@ function ExampleForm() {
                     id="firstName"
                     label="First Name"
                     error={Boolean(errors.firstName)}
-                    helperText={
-                      errors.firstName && "Campo de preenchimento obrigatório"
-                    }
+                    helperText={errors.firstName && REQUIRED_MESSAGE}
                     {...register("firstName", {
                       required: true,
                       maxLength: 20,
@@ -128,9 +127,7 @@ function ExampleForm() {
                     id="lastName"
                     label="Lastname Name"
                     error={Boolean(errors.lastName)}
-                    helperText={
-                      errors.lastName && "Campo de preenchimento obrigatório"
-                    }
+                    helperText={errors.lastName && REQUIRED_MESSAGE}
                     {...register("lastName", { required: true, maxLength: 20 })}
                   />
                 </Grid>
@@ -155,9 +152,7 @@ function ExampleForm() {
                       </MenuItem>
                     </Select>
                     {errors.author && (
-                      <FormHelperText error>
-                        With label + helper text
-                      </FormHelperText>
+                      <FormHelperText error>{REQUIRED_MESSAGE}</FormHelperText>
                     )}
                   </FormControl>
                 </Grid>
@@ -184,9 +179,7 @@ function ExampleForm() {
                       })}
                     </Select>
                     {errors.book && (
-                      <FormHelperText error>
-                        With label + helper text
-                      </FormHelperText>
+                      <FormHelperText error>{REQUIRED_MESSAGE}</FormHelperText>
                     )}
                   </FormControl>
                 </Grid>
