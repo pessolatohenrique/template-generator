@@ -17,6 +17,7 @@ import {
   Switch,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 import { THEME_COLOR } from "../../constants/default_settings";
 import { REQUIRED_MESSAGE } from "../../constants/messages";
@@ -77,16 +78,25 @@ function ExampleForm() {
     watch,
   } = useForm<IExampleForm>();
   const [books, setBooks] = useState<IBookList>({ items: [] });
+
   const onSubmit = (data: IExampleForm) => console.log(data);
 
+  const watchAuthor = watch("author");
+
   useEffect(() => {
+    async function searchCep() {
+      const cep = await axios.get(
+        `https://viacep.com.br/ws/${process.env.REACT_APP_CEP_EXAMPLE}/json/`
+      );
+      console.log("cep example", cep);
+    }
+
+    searchCep();
+
     const author = watch("author");
     const books = [...rows.items].filter((item) => item.author === author);
-    console.log("all items?", [...rows.items]);
-    console.log("author??", author);
-    console.log("books??", books);
     setBooks({ items: books });
-  }, [watch("author")]);
+  }, [watchAuthor]);
 
   return (
     <>

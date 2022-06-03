@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Typography,
   AppBar,
@@ -17,6 +17,7 @@ import BookIcon from "@mui/icons-material/Book";
 import PeopleIcon from "@mui/icons-material/People";
 import { MenuList, MenuItem } from "../interfaces/Menu";
 import { PROJECT_NAME } from "../constants/default_settings";
+import { initializeAxios } from "../utils/requests";
 
 const menuList: MenuList = {
   items: [
@@ -40,6 +41,10 @@ const menuList: MenuList = {
 
 function AppBarWrapper() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    initializeAxios();
+  }, []);
 
   function handleDrawerOpen(): void {
     setOpen(true);
