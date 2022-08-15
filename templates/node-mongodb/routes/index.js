@@ -1,4 +1,5 @@
 const bodyParser = require("body-parser");
+const { User } = require("../models");
 
 module.exports = (app) => {
   app.use(bodyParser.json());
@@ -11,6 +12,12 @@ module.exports = (app) => {
 
   app.post("/author", function (req, res) {
     const body = req.body;
+
+    const user = new User({ username: "awesome", email: "user@awesome.com" });
+    user.save((error) => {
+      return res.status(400).json(error);
+    });
+
     return res
       .status(200)
       .json({ message: "everything is fine in POST request!", body });
