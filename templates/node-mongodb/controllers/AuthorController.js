@@ -1,3 +1,5 @@
+const { validationResult } = require("express-validator");
+
 const { Author } = require("../models");
 
 class AuthorController {
@@ -13,6 +15,12 @@ class AuthorController {
   static async store(req, res, next) {
     try {
       const { name, location } = req.body;
+
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
       const author = new Author({ name, location });
       author.save((error) => console.log(error));
 
@@ -25,6 +33,12 @@ class AuthorController {
   static async update(req, res, next) {
     try {
       const { id } = req.params;
+
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
       await Author.findOneAndUpdate({ _id: id }, req.body);
 
       return res.status(204).send();
