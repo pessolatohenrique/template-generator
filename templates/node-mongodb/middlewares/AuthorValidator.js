@@ -13,6 +13,19 @@ class AuthorValidator {
           return Promise.reject("Name already in use");
         }
       }),
+      body("location").custom((value, { req }) => {
+        const allFilled = Object.values(value).every(
+          (item) => item !== null && item !== ""
+        );
+
+        if (value && !allFilled) {
+          return Promise.reject(
+            "When location is filled, all fields are required"
+          );
+        }
+
+        return true;
+      }),
     ];
   }
 }
