@@ -8,6 +8,7 @@ O objetivo deste projeto é fornecer um template com recursos comuns à todos os
 
 - Node.js
 - Express
+- Mongodb
 
 ### Instalação do projeto (com o docker)
 
