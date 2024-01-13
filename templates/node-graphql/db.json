@@ -1,0 +1,81 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Ana Torre",
+      "status": true,
+      "email": "a@a.com",
+      "role": 1
+    },
+    {
+      "id": 2,
+      "name": "Gabriel Costa",
+      "status": true,
+      "email": "g@g.com",
+      "role": 1
+    },
+    {
+      "id": 3,
+      "name": "Flavia Lins",
+      "status": true,
+      "email": "f@f.com",
+      "role": 1
+    },
+    {
+      "id": 4,
+      "name": "Carlos Marques",
+      "status": true,
+      "email": "c@c.com",
+      "role": 2
+    },
+    {
+      "id": 5,
+      "name": "Silvia Souza",
+      "status": true,
+      "email": "s@s.com",
+      "role": 2
+    },
+    {
+      "id": 6,
+      "name": "Marcia Silva",
+      "status": true,
+      "email": "m@m.com",
+      "role": 2
+    },
+    {
+      "name": "Henrique",
+      "status": true,
+      "email": "pessolatohenrique@gmail.com",
+      "role": 1,
+      "id": 7
+    },
+    {
+      "name": "Henrique",
+      "status": true,
+      "email": "pessolatohenrique@gmail.com",
+      "role": 1,
+      "id": 8
+    },
+    {
+      "name": "Henrique",
+      "status": true,
+      "email": "pessolatohenrique@gmail.com",
+      "role": 1,
+      "id": 9
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "type": "ESTUDANTE"
+    },
+    {
+      "id": 2,
+      "type": "DOCENTE"
+    },
+    {
+      "id": 3,
+      "type": "COORDENACAO"
+    }
+  ]
+}
