@@ -6,7 +6,7 @@ O objetivo deste projeto é fornecer um template com recursos comuns à todos os
 
 ### Tecnologias
 
-- Node.js (recomenda-se > 20.0.0)
+- Node.js (recomenda-se >= 20.0.0)
 - GraphQL
 - Apollo Server
 - JSON Server
