@@ -12,11 +12,16 @@ export class CategoriesService {
   }
 
   findAll() {
-    return this.prisma.category.findMany();
+    return this.prisma.category.findMany({ include: { products: true } });
   }
 
   findOne(id: number) {
-    return this.prisma.category.findUniqueOrThrow({ where: { id } });
+    return this.prisma.category.findUniqueOrThrow({
+      where: { id },
+      include: {
+        products: true,
+      },
+    });
   }
 
   update(id: number, updateCategoryDto: UpdateCategoryDto) {
